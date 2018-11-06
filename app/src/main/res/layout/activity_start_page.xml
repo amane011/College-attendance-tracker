@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    android:orientation="vertical"
+    tools:context=".startPage">
+
+    <TextView
+        android:id="@+id/wc"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_margin="20dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Welcome!!"
+        android:textColor="#212121"
+        android:textIsSelectable="true"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/bt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_vertical|fill_horizontal"
+        android:text="Student"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bt5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_vertical|fill_horizontal"
+        android:text="Teacher"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>
