@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
+    android:background="@drawable/backgroundone"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,9 +12,12 @@
         android:id="@+id/tvDisplay"
         android:layout_width="match_parent"
         android:layout_height="84dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#e2e2e2"
         android:textSize="30sp" />
 
     <Button
@@ -22,14 +25,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/buttons"
         android:gravity="center_vertical|center_horizontal"
         android:text="Genrate pin"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="italic"
+        tools:layout_height="50dp"
+        tools:layout_width="250dp" />
 
     <TextView
         android:id="@+id/q1"
@@ -38,9 +43,9 @@
         android:layout_margin="15dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="Do you wan to generate another pin?"
-        android:textColor="#212121"
+        android:textColor="#e2e2e2"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="italic" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -55,7 +60,10 @@
             android:layout_margin="15dp"
             android:background="@drawable/buttons"
             android:text="Yes"
-            android:textSize="24sp" />
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_height="34dp"
+            tools:layout_width="90dp" />
 
         <Button
             android:id="@+id/bt2"
@@ -64,7 +72,10 @@
             android:layout_margin="15dp"
             android:background="@drawable/buttons"
             android:text="No"
-            android:textSize="24sp" />
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:layout_height="34dp"
+            tools:layout_width="90dp" />
     </LinearLayout>
 
 </LinearLayout>

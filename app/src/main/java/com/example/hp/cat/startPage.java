@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class startPage extends AppCompatActivity {
     Button bt4;
     Button bt5;
-    TextView wc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -19,7 +19,7 @@ public class startPage extends AppCompatActivity {
 
         bt4=findViewById(R.id.bt4);
         bt5=findViewById(R.id.bt5);
-        wc=findViewById(R.id.wc);
+
         bt5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

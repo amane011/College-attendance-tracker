@@ -28,7 +28,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/buttons"
         android:gravity="center_vertical|center_horizontal"
         android:text="Submit" />
 </LinearLayout>
