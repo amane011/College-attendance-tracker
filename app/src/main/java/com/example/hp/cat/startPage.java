@@ -30,7 +30,7 @@ public class startPage extends AppCompatActivity {
         bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(startPage.this,com.example.hp.cat.Main2Activity.class);
+                Intent intent1=new Intent(startPage.this,com.example.hp.cat.Main3Activity.class);
                 startActivity(intent1);
             }
         });
