@@ -19,9 +19,7 @@ import com.backendless.exceptions.BackendlessFault;
 
 public class regT extends AppCompatActivity {
 
-    private View mProgressView;
-    private View mLoginFormView;
-    private TextView tvLoad;
+
 
     EditText etName,etMail,etPassword,etReEnter;
     Button btnRegister;
@@ -30,9 +28,7 @@ public class regT extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_s);
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-        tvLoad = findViewById(R.id.tvLoad);
+
 
         etName=findViewById(R.id.etName);
         etMail=findViewById(R.id.etMail);
@@ -60,11 +56,11 @@ public class regT extends AppCompatActivity {
                         teacher.setPassword(password);
                         teacher.setProperty("name",name);
 
-                        showProgress(true);
+
                         Backendless.UserService.register(teacher, new AsyncCallback<BackendlessUser>() {
                             @Override
                             public void handleResponse(BackendlessUser response) {
-                                showProgress(false);
+
                                 Toast.makeText(regT.this,"User registered!",Toast.LENGTH_SHORT).show();
                                 regT.this.finish();
 
@@ -74,7 +70,7 @@ public class regT extends AppCompatActivity {
                             public void handleFault(BackendlessFault fault) {
 
                                 Toast.makeText(regT.this,"Error" + fault.getMessage(),Toast.LENGTH_SHORT).show();
-                                showProgress(false);
+
                             }
                         });
                     }
@@ -85,49 +81,5 @@ public class regT extends AppCompatActivity {
         });
 
     }
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-
-            tvLoad.setVisibility(show ? View.VISIBLE : View.GONE);
-            tvLoad.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    tvLoad.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            tvLoad.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-    }
 }

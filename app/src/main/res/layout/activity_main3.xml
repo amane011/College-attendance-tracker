@@ -9,30 +9,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="200dp"
-        android:background="@color/colorAccent"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/tvLoad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_horizontal"
-        android:text="Loading...please wait..."
-        android:textColor="@color/colorPrimary"
-        android:background="@null"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="120dp"
@@ -118,6 +94,18 @@
             android:text="Forgot password? Reset here."
             android:textSize="18sp"
             android:textStyle="italic" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:clickable="false"
+            android:foregroundGravity="center_horizontal"
+            android:progressDrawable="@drawable/loading_bar"
+            android:visibility="gone" />
+
 
     </LinearLayout>
 
