@@ -60,6 +60,7 @@ public class loginT extends AppCompatActivity {
 
                         @Override
                         public void handleResponse(BackendlessUser response) {
+                            CAT.user=response;
                             Toast.makeText(loginT.this,"Logged in!",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(loginT.this,MainActivity.class));
                             loginT.this.finish();
@@ -82,7 +83,7 @@ public class loginT extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(loginT.this,regT.class));
+                startActivity(new Intent(loginT.this,regS.class));
 
 
             }
@@ -128,6 +129,7 @@ public class loginT extends AppCompatActivity {
                     Backendless.Data.of(BackendlessUser.class).findById(userObjectId, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
+                            CAT.user=response;
                             startActivity(new Intent(loginT.this,MainActivity.class));
                             loginT.this.finish();
 

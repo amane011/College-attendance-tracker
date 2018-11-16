@@ -3,12 +3,15 @@ package com.example.hp.cat;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,21 +22,21 @@ import com.backendless.exceptions.BackendlessFault;
 
 public class regS extends AppCompatActivity {
 
-    private View mProgressView;
-    private View mLoginFormView;
-    private TextView tvLoad;
+
 
     EditText etName,etMail,etPassword,etReEnter;
     Button btnRegister;
+    RadioGroup rg;
+    RadioButton teacher,student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_s);
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-        tvLoad = findViewById(R.id.tvLoad);
 
+        rg=findViewById(R.id.rg);
+        teacher=findViewById(R.id.teacher);
+        student=findViewById(R.id.student);
         etName=findViewById(R.id.etName);
         etMail=findViewById(R.id.etMail);
         etPassword=findViewById(R.id.etPassword);
@@ -44,7 +47,7 @@ public class regS extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     if(etName.getText().toString().isEmpty() || etMail.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()
-                            || etReEnter.getText().toString().isEmpty() )
+                            || etReEnter.getText().toString().isEmpty()  )
                     {
                         Toast.makeText(regS.this,"Please enter all details!",Toast.LENGTH_SHORT).show();
                     }
@@ -59,6 +62,30 @@ public class regS extends AppCompatActivity {
                             ((BackendlessUser) user).setEmail(mail);
                             user.setPassword(password);
                             user.setProperty("name",name);
+
+                            String ans;
+                            if (teacher.isChecked())
+                            ans="teacher";
+                            else
+                                ans="student";
+
+                            category c1= new category();
+                            c1.setEmail(mail);
+                            c1.setName(name);
+                            c1.setCategory1(ans);
+
+                            Backendless.Persistence.save(c1, new AsyncCallback<category>() {
+                                @Override
+                                public void handleResponse(category response) {
+
+                                }
+
+                                @Override
+                                public void handleFault(BackendlessFault fault) {
+                                    Toast.makeText(regS.this,"Error: " + fault.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
 
 
                             Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
@@ -80,7 +107,10 @@ public class regS extends AppCompatActivity {
                         }
                         else
                             Toast.makeText(regS.this,"Passwords do not match!,",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(regS.this,loginT.class));
+                        regS.this.finish();
                     }
+
             }
         });
 
