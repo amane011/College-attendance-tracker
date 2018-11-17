@@ -18,7 +18,10 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
+
+import java.util.List;
 
 public class loginT extends AppCompatActivity {
 
@@ -52,7 +55,7 @@ public class loginT extends AppCompatActivity {
                     Toast.makeText(loginT.this,"Please enter all details.",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    String name = etMail.getText().toString().trim();
+                    final String name = etMail.getText().toString().trim();
                     String password=etPassword.getText().toString().trim();
 
 

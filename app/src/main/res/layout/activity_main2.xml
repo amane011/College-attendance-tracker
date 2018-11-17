@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/cdSubmit"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="78dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/bt6"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginLeft="15dp"
