@@ -1,10 +1,8 @@
 package com.example.hp.cat;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
+
 import android.content.Intent;
-import android.os.Build;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
@@ -59,7 +55,7 @@ public class regS extends AppCompatActivity {
                             String mail=etMail.getText().toString().trim();
                             String password=etPassword.getText().toString().trim();
                             BackendlessUser user= new BackendlessUser();
-                            ((BackendlessUser) user).setEmail(mail);
+                            user.setEmail(mail);
                             user.setPassword(password);
                             user.setProperty("name",name);
 
@@ -69,12 +65,13 @@ public class regS extends AppCompatActivity {
                             else
                                 ans="student";
 
-                            category c1= new category();
-                            c1.setEmail(mail);
-                            c1.setName(name);
-                            c1.setCategory1(ans);
+                            category category= new category();
 
-                            Backendless.Persistence.save(c1, new AsyncCallback<category>() {
+                            category.setEmail(mail);
+                            category.setName(name);
+                            category.setCategory1(ans);
+                            category.setPin("0000000");
+                            Backendless.Persistence.save(category, new AsyncCallback<category>() {
                                 @Override
                                 public void handleResponse(category response) {
 
