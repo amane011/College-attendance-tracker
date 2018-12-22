@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +34,7 @@ public class Main2Activity extends AppCompatActivity {
     Button btsubmit1;
     Menu menu;
     TextView codeview;
+    NavigationView nv;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +42,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         btsubmit1 = findViewById(R.id.btsubmit1);
         codeview = findViewById(R.id.codeview);
-        Toolbar toolbar=findViewById(R.id.nav_action);
-        setSupportActionBar(toolbar);
-        ndrawerLayout=(DrawerLayout) findViewById(R.id.drawerLayout);
-        nToggle=new ActionBarDrawerToggle(this,ndrawerLayout,R.string.open,R.string.close);
-        ndrawerLayout.addDrawerListener(nToggle);
-        nToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
         btsubmit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,34 +95,6 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.check_attendance: {
-                startActivity(new Intent(Main2Activity.this, display.class));
-                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
-            }
-            case R.id.mark_attendance: {
-                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(Main2Activity.this, Main2Activity.class));
-            }
-
-            case R.id.logout:
-            {
-                Intent logoutintent = new Intent(Main2Activity.this, loginT.class);
-                startActivity(logoutintent);
-                SharedPreferences loginSharedPreferences;
-                loginSharedPreferences = getSharedPreferences("current_user", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = loginSharedPreferences.edit();
-                editor.putString("UniqueId", "");
-                editor.commit();
-
-                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
-            }
-
-            case android.R.id.home:
-                ndrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-
-        }
-        return super.onOptionsItemSelected(item);
+   return nToggle.onOptionsItemSelected(item) ||super.onOptionsItemSelected(item);
     }
 }
